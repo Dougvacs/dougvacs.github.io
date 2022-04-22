@@ -1,1 +1,0 @@
-# dougvacs.github.io

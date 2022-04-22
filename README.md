@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# eleventy-base-blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A starter repository showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
 
-## Available Scripts
+[![Build Status](https://travis-ci.org/11ty/eleventy-base-blog.svg?branch=master)](https://travis-ci.org/11ty/eleventy-base-blog)
 
-In the project directory, you can run:
+## Demos
 
-### `npm start`
+* [Netlify](https://eleventy-base-blog.netlify.com/)
+* [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
+* [Remix on Glitch](https://glitch.com/~11ty-eleventy-base-blog)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Deploy this to your own site
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+These builders are amazing—try them out to get your own Eleventy site in a few clicks!
 
-### `npm test`
+* [Get your own Eleventy web site on Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)
+* [Get your own Eleventy web site on Vercel](https://vercel.com/import/project?template=11ty%2Feleventy-base-blog)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### 1. Clone this Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Navigate to the directory
 
-### `npm run eject`
+```
+cd my-blog-name
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 4. Edit _data/metadata.json
 
-## Learn More
+### 5. Run Eleventy
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npx eleventy
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Or build and host locally for local development
+```
+npx eleventy --serve
+```
 
-### Code Splitting
+Or build automatically when a template changes:
+```
+npx eleventy --watch
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Or in debug mode:
+```
+DEBUG=* npx eleventy
+```
 
-### Analyzing the Bundle Size
+### Implementation Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `about/index.md` shows how to add a content page.
+* `posts/` has the blog posts but really they can live in any directory. They need only the `post` tag to be added to this collection.
+* Add the `nav` tag to add a template to the top level site navigation. For example, this is in use on `index.njk` and `about/index.md`.
+* Content can be any template format (blog posts needn’t be markdown, for example). Configure your supported templates in `.eleventy.js` -> `templateFormats`.
+	* Because `css` and `png` are listed in `templateFormats` but are not supported template types, any files with these extensions will be copied without modification to the output (while keeping the same directory structure).
+* The blog post feed template is in `feed/feed.njk`. This is also a good example of using a global data files in that it uses `_data/metadata.json`.
+* This example uses three layouts:
+  * `_includes/layouts/base.njk`: the top level HTML structure
+  * `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
+  * `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
+* `_includes/postlist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `index.njk` has an example of how to use it.
