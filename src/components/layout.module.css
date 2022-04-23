@@ -1,0 +1,103 @@
+:root {
+    --main-bg-color: black;
+    --secondary-bg-color: #143F6B;
+    --main-fg-color: lightgrey;
+    --secondary-fg-color: #F55353;
+    --header-color: var(--main-fg-color);
+    --nav-text-color-unhover: grey;
+    --nav-text-color-hover: var(--main-fg-color);
+    --link-text-color-unhover: var(--main-fg-color);
+    --link-text-color-hover: var(--secondary-fg-color);
+}
+
+html {
+    background-color: var(--main-bg-color);
+    color: var(--main-fg-color);
+    font-family: 'Libre Baskerville', serif;
+}
+
+hr {
+    border: 1px solid var(--main-fg-color);
+    background-color: var(--main-fg-color);
+}
+
+.container {
+    margin: auto;
+    max-width: 700px;
+}
+
+.heading {
+    color: var(--header-color);
+    text-align: center;
+    font-size: 4em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    font-weight: 900;
+}
+
+p {
+    margin: 0;
+}
+
+.subheading {
+    display: block;
+    text-align: center;
+    color: var(--main-fg-color);
+}
+
+.main-content {
+    column-count: 1;
+    text-align: justify;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    justify-content: center;
+}
+
+.nav-link-item {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.nav-link-text {
+    color: var(--nav-text-color-unhover);
+    text-decoration: none;
+}
+
+.nav-link-text:hover {
+    color: var(--nav-text-color-hover);
+}
+
+.nav-link-active {
+    color: var(--main-fg-color);
+}
+
+.post-link-text {
+    color: var(--link-text-color-unhover);
+    text-decoration: none;
+}
+
+.post-link-text:hover {
+    color: var(--link-text-color-hover);
+}
+
+@media screen and (max-width: 600px) {
+    .main-content {
+        column-count: 1;
+    }
+}
