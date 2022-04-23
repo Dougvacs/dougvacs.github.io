@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-blog-tsx",
+    "path": "/blog/",
+    "result": {"data":{"blog":{"posts":[{"frontmatter":{"date":"23-04-2022","title":"Awesome Blog Post Title","author":"Glenn"},"fields":{"slug":"/posts/first_post/"},"excerpt":"This is a h1 title This is a h2 title Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus pharetra massa, id ornare diam…","id":"23c0315e-8000-5175-9b47-ec9945916bd0"}]}},"pageContext":{}},
+    "staticQueryHashes": []}
