@@ -10,6 +10,28 @@
     --link-text-color-hover: var(--secondary-fg-color);
 }
 
+@keyframes delayed-reveal {
+    0% {left: 0%;}
+    16% {left: 0%;}
+    84% {left: 100%;}
+    100% {left: 100%;}
+}
+
+@keyframes scan-line {
+    0% {top: 50%; bottom: 50%; right: 100%; margin-right: -0.125rem;}
+    8% {top: 0; bottom: 0; right: 100%; margin-right: -0.125rem;}
+    42% {top: 0; bottom: 0; right: 0%; margin-right: -0.5rem;}
+    60% {top: 0; bottom: 0; right: 0%; margin-right: -0.5rem;}
+    100% {top: 50%; bottom: 50%; right: 0%; margin-right: -0.5rem;}
+}
+
+@keyframes glitch {
+    0% {box-shadow: -0.025em 0.025em #f0f, -0.025em -0.025em #0ff;}
+    25% {box-shadow: -0.025em -0.025em #f0f, 0.025em 0.025em #0ff;}
+    50% {box-shadow: 0.025em 0.025em #f0f, 0.025em -0.025em #0ff;}
+    75% {box-shadow: 0.025em -0.025em #f0f, -0.025em 0.025em #0ff;}
+}
+
 html {
     background-color: var(--main-bg-color);
     color: var(--main-fg-color);
@@ -38,6 +60,40 @@ h1 {
     font-size: 2em;
     margin-top: 0.1em;
     margin-bottom: 0.1em;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+h1::before {
+    position: absolute;
+    background-color: var(--main-bg-color);
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation-name: delayed-reveal;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    padding-left: 0.1em;
+    margin-right: -0.05em;
+}
+
+h1::after {
+    position: absolute;
+    background-color: var(--main-fg-color);
+    content: '';
+    top: 25%;
+    bottom: 25%;
+    right: 100%;
+    width: 0.25rem;
+    animation: scan-line 4s, glitch 0.3s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    padding-left: 0.00625em;
+    margin-right: -0.003124em;
 }
 
 h2 {
@@ -75,6 +131,7 @@ p {
 }
 
 .nav-link-text {
+    position: relative;
     color: var(--nav-text-color-unhover);
     text-decoration: none;
 }
@@ -90,10 +147,6 @@ p {
 .post-link-text {
     color: var(--link-text-color-unhover);
     text-decoration: none;
-}
-
-.post-link-text:hover {
-    color: var(--link-text-color-hover);
 }
 
 @media screen and (max-width: 600px) {

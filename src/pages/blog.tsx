@@ -2,8 +2,8 @@ import * as React from 'react'
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 import {
-    postLinkText, heading1
-} from '../components/layout.module.css'
+    postLinkText, heading1, container
+} from '../components/layout.module.scss'
 
 const Blog = ({ data }) => {
     const { posts } = data.blog
@@ -12,9 +12,13 @@ const Blog = ({ data }) => {
         I might delete this site in a month.">
         {posts.map(post => (
             <Link to={post.fields.slug} className={postLinkText}>
-                <h1>{post.frontmatter.title}</h1>
-                {post.frontmatter.author}, {post.frontmatter.date}<br></br>
-                {post.excerpt}
+                <div style={{"display":"block"}}>
+                  <div className={container}>
+                    <h1>{post.frontmatter.title}</h1>
+                    {post.frontmatter.author}, {post.frontmatter.date}<br></br>
+                    {post.excerpt}
+                  </div>
+                </div>
             </Link>
         ))}
         </Layout>

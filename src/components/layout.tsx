@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import {
     container, heading, subheading, navLinks, 
     navLinkItem, navLinkText, mainContent, navLinkActive
-} from './layout.module.css'
+} from './layout.module.scss'
 import e from 'cors'
 import { escape } from 'lodash'
 
