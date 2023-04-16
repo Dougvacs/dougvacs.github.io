@@ -21,10 +21,13 @@
 <div class="container">
     <h1 class="text-center">Game</h1>
 <main>
-    <div class="ratio ratio-16x9">
-    <iframe id="gameid" allowfullscreen="" class="w-100" src="/godot_game/index.html"></iframe>
+    <div class="d-flex flex-column align-items-center">
+    <div class="ratio ratio-16x9 w-50 h-50">
+        <iframe id="gameid" allowfullscreen="" class="w-100 h-100" src="/godot_game/index.html"></iframe>
+    </div>
+    <a onclick="openFullscreen()" class="btn btn-primary w-50">Go Fullscreen!</a>
 </div>
-<a onclick="openFullscreen()" class="btn btn-primary">Test!</a>
+
 <script>
     var game = document.getElementById("gameid");
     function openFullscreen() {
@@ -33,6 +36,13 @@
         }
     }
 </script>
+
+<style>
+    canvas {
+        overflow: hidden !important;
+        overflow-clip-margin: 0em;
+    }
+</style>
 </main>
 </div>
 </body>
